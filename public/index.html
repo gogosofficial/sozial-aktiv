@@ -95,7 +95,7 @@
             <!-- DESKTOP NAV -->
             <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
                 <a href="#berufe" class="hover:text-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 rounded px-1">Berufe entdecken</a>
-                <a href="#sticker" class="hover:text-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 rounded px-1">Sticker</a>
+                <a href="#weg" class="hover:text-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 rounded px-1">Dein Weg</a>
                 <a href="#quiz-sektion" class="hover:text-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 rounded px-1">Berufs-Quiz</a>
                 <a href="#schulabschluss" class="hover:text-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 rounded px-1">Schulabschluss</a>
                 <a href="#organisationen" class="hover:text-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 rounded px-1">Anlaufstellen</a>
@@ -120,7 +120,7 @@
         <!-- MOBILE MENU -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-3 transition-all duration-300">
             <a href="#berufe" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium">Berufe entdecken</a>
-            <a href="#sticker" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium">Sticker</a>
+            <a href="#weg" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium">Dein Weg</a>
             <a href="#quiz-sektion" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium">Berufs-Quiz</a>
             <a href="#schulabschluss" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium">Schulabschluss</a>
             <a href="#organisationen" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium">Anlaufstellen</a>
@@ -312,41 +312,69 @@
             </div>
         </section>
 
-        <!-- STICKER & QR-CODE SEKTION -->
-        <section id="sticker" class="py-20 bg-slate-100/70 border-y border-slate-200/60">
+        <!-- DEIN WEG IN EINEN SOZIALEN BERUF -->
+        <section id="weg" class="py-20 bg-slate-100/70 border-y border-slate-200/60">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid lg:grid-cols-12 gap-12 items-center">
-                    <div class="lg:col-span-6 space-y-6 text-center lg:text-left animate-on-scroll">
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold tracking-wide uppercase">
-                            Sticker-Aktion
+                <div class="text-center max-w-3xl mx-auto space-y-4 mb-16 animate-on-scroll">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Dein Weg in einen sozialen Beruf</h2>
+                    <p class="text-slate-600 text-base sm:text-lg">Drei einfache Schritte begleiten dich auf dem Weg zu deiner passenden beruflichen Zukunft.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Schritt 1 -->
+                    <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-lg shadow-slate-200/50 flex flex-col justify-between animate-on-scroll">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-600 font-extrabold text-2xl flex items-center justify-center shadow-inner">
+                                1
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900">Berufe entdecken</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Finde heraus, welche Fachbereiche es gibt – von der Kinderpflege über Rettungsdienste bis hin zur generalistischen Pflege oder Ergotherapie.
+                            </p>
                         </div>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Dein Sticker. Dein Einstieg.</h2>
-                        <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
-                            Scanne den QR-Code und finde heraus, welcher soziale Beruf zu dir passt. Die Sticker machen auf Plakaten oder im Freundeskreis direkt auf das Projekt aufmerksam und bieten einen unkomplizierten Zugang zur Berufsfindung.
-                        </p>
-                        <p class="text-xs text-slate-500 italic">
-                            Hinweis: Der QR-Code auf den physischen Stickern führt später direkt zu dieser GitHub-Pages-Webseite.
-                        </p>
+                        <div class="pt-6">
+                            <a href="#berufe" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 font-semibold text-sm">
+                                <span>Jetzt stöbern</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
                     </div>
 
-                    <div class="lg:col-span-6 flex justify-center animate-on-scroll">
-                        <!-- Sticker Mockup -->
-                        <div class="relative w-full max-w-sm bg-gradient-to-br from-white to-brand-50 p-8 rounded-3xl border border-brand-200 shadow-2xl shadow-brand-500/10 transform sm:rotate-2 hover:rotate-0 transition-transform">
-                            <div class="absolute -top-3 -right-3 bg-coral-500 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
-                                QR-Aktion
+                    <!-- Schritt 2 -->
+                    <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-lg shadow-slate-200/50 flex flex-col justify-between animate-on-scroll">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-600 font-extrabold text-2xl flex items-center justify-center shadow-inner">
+                                2
                             </div>
-                            <div class="text-center space-y-4">
-                                <div class="w-36 h-36 mx-auto bg-white rounded-2xl p-3 shadow-inner border border-slate-100 flex items-center justify-center">
-                                    <!-- QR Code SVG Platzhalter -->
-                                    <svg class="w-full h-full text-slate-800" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14-2h2v2h-2v-2zm-4 0h2v2h-2v-2zm4 4h2v4h-2v-4zm-4 2h2v2h-2v-2zm4-8h2v2h-2V6zm-8 10h2v2h-2v-2zm2 2h2v2h-2v-2zm2-2h2v2h-2v-2z"/>
-                                    </svg>
-                                </div>
-                                <div class="space-y-1">
-                                    <h3 class="font-bold text-slate-950 text-base">„Jetzt aktiv werden in sozialen Berufen“</h3>
-                                    <p class="text-xs text-brand-700 font-semibold">QR-Code scannen & loslegen</p>
-                                </div>
+                            <h3 class="text-xl font-bold text-slate-900">Quiz machen</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Beantworte kurze Fragen zu deinen Stärken und Interessen und erhalte sofort eine erste Orientierung, welcher Weg zu dir passen könnte.
+                            </p>
+                        </div>
+                        <div class="pt-6">
+                            <button onclick="openQuizModal()" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 font-semibold text-sm focus:outline-none">
+                                <span>Quiz starten</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Schritt 3 -->
+                    <div class="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-lg shadow-slate-200/50 flex flex-col justify-between animate-on-scroll">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-600 font-extrabold text-2xl flex items-center justify-center shadow-inner">
+                                3
                             </div>
+                            <h3 class="text-xl font-bold text-slate-900">Nächste Schritte planen</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Prüfe deinen Schulabschluss, informiere dich über passende Wege und nimm Kontakt zu offiziellen Anlaufstellen oder Trägern auf.
+                            </p>
+                        </div>
+                        <div class="pt-6">
+                            <a href="#schulabschluss" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 font-semibold text-sm">
+                                <span>Wege ansehen</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -494,7 +522,7 @@
                 </div>
                 <div class="flex items-center gap-4 text-sm">
                     <a href="#berufe" class="hover:text-white transition-colors">Berufe</a>
-                    <a href="#sticker" class="hover:text-white transition-colors">Sticker</a>
+                    <a href="#weg" class="hover:text-white transition-colors">Dein Weg</a>
                     <a href="#quiz-sektion" class="hover:text-white transition-colors">Quiz</a>
                     <a href="#organisationen" class="hover:text-white transition-colors">Anlaufstellen</a>
                 </div>
@@ -832,7 +860,7 @@
                 options: [
                     { text: "Ja, ich schätze Lebenserfahrung und helfe sehr gerne.", category: "nursing" },
                     { text: "Vielleicht in bestimmten Teilbereichen.", category: "social" },
-                    $ { text: "Nicht unbedingt mein persönlicher Schwerpunkt.", category: "other" }
+                    { text: "Nicht unbedingt mein persönlicher Schwerpunkt.", category: "other" }
                 ]
             },
             {
