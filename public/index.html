@@ -7,7 +7,7 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="Finde heraus, welcher soziale Beruf zu dir passt: Kinderpflege, Rettungsdienst, Pflege, Soziale Arbeit und mehr.">
     <!-- Open Graph & Social Media Link Vorschau -->
-    <!-- Später og-image.png im gleichen Ordner wie index.html ablegen. (Mindestens 1200 x 630 Pixel) -->
+    <!-- Hinweis: Lade og-image.png (mind. 1200x630 px) im gleichen Ordner wie die index.html ab. -->
     <meta property="og:image" content="og-image.png">
     <meta property="og:title" content="Jetzt aktiv werden in sozialen Berufen">
     <meta property="og:description" content="Finde heraus, welcher soziale Beruf zu dir passt und starte deinen Weg mit Sinn. Ein Projekt von Paul.">
@@ -15,8 +15,10 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Jetzt aktiv werden in sozialen Berufen">
     <meta name="twitter:description" content="Finde heraus, welcher soziale Beruf zu dir passt: Kinderpflege, Rettungsdienst, Pflege, Soziale Arbeit und mehr.">
-    <!-- Favicon Platzhalter -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤝</text></svg>">
+    <!-- Logo als Favicon -->
+    <!-- Die Datei logo.png muss im gleichen Ordner wie die index.html liegen (hier direkt via Imgur eingebunden). -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/4IoVAd0.png">
+    <link rel="apple-touch-icon" href="https://i.imgur.com/4IoVAd0.png">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -102,11 +104,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- LOGO -->
             <a href="#" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-xl p-1">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
-                    <svg class="w-6 h-6 fill-none stroke-current stroke-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
-                </div>
+                <!-- Lade die Logodatei als logo.png in denselben Ordner wie die index.html. -->
+                <img src="https://i.imgur.com/4IoVAd0.png" alt="Logo: Jetzt aktiv werden in sozialen Berufen" class="h-10 w-auto object-contain group-hover:scale-105 transition-transform">
                 <div>
                     <span class="text-lg font-bold tracking-tight text-slate-900 block leading-none">Sozial. Aktiv.</span>
                     <span class="text-xs font-medium text-brand-600 tracking-wider uppercase">Zukunft gestalten</span>
@@ -406,7 +405,7 @@
         <section id="quiz-sektion" class="py-16 bg-gradient-to-r from-brand-600 to-teal-700 text-white">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 animate-on-scroll">
                 <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Welcher soziale Beruf passt zu dir?</h2>
-                <p class="text-brand-100 text-lg max-w-2xl mx-auto">Finde es in unserem interaktiven 8-Fragen-Quiz heraus. Erhalte sofort eine erste Orientierung und passende Vorschläge.</p>
+                <p class="text-brand-100 text-lg max-w-2xl mx-auto">Finde es in unserem interaktiven 15-Fragen-Quiz heraus. Erhalte sofort eine erste Orientierung und passende Vorschläge.</p>
                 <button onclick="openQuizModal(event)" class="bg-coral-500 hover:bg-coral-600 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-black/10 transition-all transform hover:-translate-y-0.5 inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-coral-500">
                     <span>Quiz jetzt starten</span>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
@@ -620,11 +619,11 @@
             <!-- Quiz Header & Progress -->
             <div id="quiz-header">
                 <div class="flex items-center justify-between text-xs font-semibold text-brand-600 uppercase tracking-wider mb-2">
-                    <span id="quiz-progress-text">Frage 1 von 8</span>
-                    <span id="quiz-progress-percent">12%</span>
+                    <span id="quiz-progress-text">Frage 1 von 15</span>
+                    <span id="quiz-progress-percent">7%</span>
                 </div>
                 <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                    <div id="quiz-progress-bar" class="bg-brand-500 h-full transition-all duration-300" style="width: 12.5%;"></div>
+                    <div id="quiz-progress-bar" class="bg-brand-500 h-full transition-all duration-300" style="width: 6.66%;"></div>
                 </div>
             </div>
 
@@ -820,9 +819,9 @@
                 titleEl.innerText = "Impressum";
                 bodyEl.innerHTML = `
                     <p><strong>Angaben gemäß § 5 TMG / Verantwortlich für den Inhalt:</strong></p>
-                    <p>Paul (Schüler / Projektinitiator)<br>Musterstraße 123<br>12345 Musterstadt</p>
-                    <p><strong>Kontakt:</strong><br>E-Mail: beispiel@example.com</p>
-                    <p><em>Hinweis: Dies ist eine rein private Informations- und Orientierungsseite ohne kommerzielle Absichten.</em></p>
+                    <p>Paul<br>Karl-Marx-Straße 23<br>07381 Pößneck<br>Deutschland</p>
+                    <p><strong>Kontakt:</strong><br>E-Mail: <a href="mailto:gogosofficialgroup@gmail.com" class="text-brand-600 underline hover:text-brand-700">gogosofficialgroup@gmail.com</a></p>
+                    <p><strong>Haftungsausschluss & Urheberrecht:</strong><br>Die Inhalte dieser Website dienen ausschließlich privaten Zwecken. Eine Haftung für externe Inhalte und verlinkte Seiten wird im Rahmen der gesetzlichen Möglichkeiten ausgeschlossen. Inhalte, Texte, Gestaltung und verwendete Materialien dieser Website dürfen nicht ohne Zustimmung übernommen oder anderweitig verwendet werden.</p>
                 `;
             } else if (type === 'datenschutz') {
                 titleEl.innerText = "Datenschutzerklärung";
@@ -968,76 +967,147 @@
         }
 
 
-        // ================= QUIZ LOGIC =================
+        // ================= QUIZ LOGIC (15 FRAGEN) =================
         const quizQuestions = [
             {
                 question: "1. Wie findest du es, mit Kindern und Jugendlichen zu arbeiten?",
                 options: [
-                    { text: "Super! Ich spiele, bastle und fördere gerne Kinder.", category: "kita" },
-                    { text: "Geht so, ist nicht mein Hauptfokus.", category: "other" },
-                    { text: "Ich bevorzuge andere Altersgruppen (z.B. Ältere oder Notfälle).", category: "other" }
+                    { text: "Super! Ich spiele, bastle und fördere gerne Kleinkinder in Kitas.", category: "kita" },
+                    { text: "Ich begleite Kinder und Jugendliche pädagogisch und bei Freizeitprojekten.", category: "education" },
+                    { text: "Ich fördere Kinder mit individuellem Förderbedarf im Alltag.", category: "inclusion" },
+                    { text: "Ich unterstütze junge Menschen und Familien bei organisatorischen Fragen.", category: "social" }
                 ]
             },
             {
                 question: "2. Würdest du in einer Notsituation ruhig bleiben und sofort anpacken wollen?",
                 options: [
-                    { text: "Ja, absolut! Adrenalin stört mich nicht, ich helfe gerne.", category: "rescue" },
-                    { text: "Wenn ich gut ausgebildet bin, auf jeden Fall.", category: "rescue" },
-                    { text: "Eher nicht, ich bevorzuge ruhige und geordnete Umgebungen.", category: "other" }
+                    { text: "Ja, absolut! Adrenalin und schnelle Rettungseinsätze motivieren mich total.", category: "rescue" },
+                    { text: "Ich helfe in Akutsituationen im Krankenhaus oder Pflegeheim gerne aus.", category: "nursing" },
+                    { text: "Ich bleibe in unvorhergesehenen Situationen ruhig und reagiere besonnen.", category: "inclusion" },
+                    { text: "Ich helfe lieber strukturiert im Alltag, als spontane Notfälle zu betreuen.", category: "social" }
                 ]
             },
             {
-                question: "3. Was reizt dich mehr: Direkte Pflege und Betreuung von Menschen oder kreative Förderung?",
+                question: "3. Welcher kreative oder handwerkliche Aspekt spricht dich am meisten an?",
                 options: [
-                    { text: "Menschliche Pflege, medizinische Unterstützung und Alltagsbegleitung.", category: "nursing" },
-                    { text: "Kreative Therapien, Handwerk und alltagsnahe Aktivierung.", category: "therapy" },
-                    { text: "Begleitung von Menschen mit individuellem Förderbedarf.", category: "education" }
+                    { text: "Ich liebe handwerkliche und kreative Projekte für therapeutische Zwecke.", category: "therapy" },
+                    { text: "Ich bastle, male und gestalte den Tag am liebsten kreativ mit Kindern.", category: "kita" },
+                    { text: "I plan gerne kreative Bildungsangebote und Gruppenaktivitäten.", category: "education" },
+                    { text: "Ich nutze kreative Methoden, um Menschen individuell zu fördern.", category: "inclusion" }
                 ]
             },
             {
-                question: "4. Wie wichtig ist dir Teamarbeit im Arbeitsalltag?",
+                question: "4. Wie stehst du zu medizinischen Themen und Gesundheitsfragen?",
                 options: [
-                    { text: "Sehr wichtig! Im eingespielten Team sind wir unschlagbar.", category: "rescue" },
-                    { text: "Wichtig, aber ich kann auch super selbstständig arbeiten.", category: "kita" },
-                    { text: "Ich mag eine ausgeglichene Mischung aus Team und Eigenverantwortung.", category: "social" }
+                    { text: "Notfallmedizin und Rettungstechnik finde ich extrem spannend.", category: "rescue" },
+                    { text: "Gesundheitswesen, Krankheitsbilder und medizinische Pflege interessieren mich sehr.", category: "nursing" },
+                    { text: "Ich möchte wissen, wie Körperfunktionen durch gezielte Übungen verbessert werden.", category: "therapy" },
+                    { text: "Medizinisches Wissen ist nützlich, aber mein Schwerpunkt liegt auf der sozialen Betreuung.", category: "social" }
                 ]
             },
             {
-                question: "5. Kannst du dir vorstellen, älteren oder hilfsbedürftigen Menschen im Alltag zur Seite zu stehen?",
+                question: "5. Kannst du dir vorstellen, Menschen im Alltag praktisch zur Hand zu gehen?",
                 options: [
-                    { text: "Ja, ich schätze Lebenserfahrung und helfe sehr gerne.", category: "nursing" },
-                    { text: "Vielleicht in bestimmten Teilbereichen.", category: "social" },
-                    { text: "Nicht unbedingt mein persönlicher Schwerpunkt.", category: "other" }
+                    { text: "Menschen bei der täglichen Pflege und Genesung zu unterstützen, ist mein Ziel.", category: "nursing" },
+                    { text: "Ich helfe im Alltag, bei Behördengängen oder Hausarbeiten.", category: "social" },
+                    { text: "Ich begleite Menschen mit Behinderungen im selbstständigen Wohnen.", category: "inclusion" },
+                    { text: "Ich helfe Menschen dabei, Handlungsabläufe im Alltag wieder einzuüben.", category: "therapy" }
                 ]
             },
             {
-                question: "6. Interessieren dich Themen wie Gesundheit, Medizin und Erste Hilfe?",
+                question: "6. Wie wichtig ist dir der Kontakt und die Arbeit mit älteren Menschen?",
                 options: [
-                    { text: "Ja, medizinische Themen und Notfallhilfe faszinieren mich total!", category: "rescue" },
-                    { text: "Ein grundlegendes Interesse an Gesundheit ist absolut da.", category: "nursing" },
-                    { text: "Nicht besonders, mein Fokus liegt woanders.", category: "other" }
+                    { text: "Ich schätze den Umgang mit älteren Menschen und helfe ihnen in der Pflege.", category: "nursing" },
+                    { text: "Älteren Menschen im Alltag zur Seite zu stehen, bereitet mir große Freude.", category: "social" },
+                    { text: "Ich unterstütze ältere Menschen dabei, nach Verletzungen wieder fit zu werden.", category: "therapy" },
+                    { text: "Ich begleite ältere Menschen mit Einschränkungen liebevoll im Alltag.", category: "inclusion" }
                 ]
             },
             {
-                question: "7. Wie gehst du mit stressigen Situationen um?",
+                question: "7. Welches Arbeitsumfeld und Teamgefühl wünschst du dir?",
                 options: [
-                    { text: "Ich bewahre einen kühlen Kopf und behalte den Überblick.", category: "rescue" },
-                    { text: "Mit etwas Planung und Ruhe kriege ich jede Hürde hin.", category: "kita" },
-                    { text: "In stressigen Momenten brauche ich einen klaren Rhythmus.", category: "social" }
+                    { text: "Im Rettungsdienst-Team muss jeder Handgriff sitzen – das Teamwork liebe ich.", category: "rescue" },
+                    { text: "Im Kita-Team gemeinsam den Tag zu gestalten, ist super wichtig für mich.", category: "kita" },
+                    { text: "Auf Station arbeite ich eng Hand in Hand mit Pflegekräften und Ärzten.", category: "nursing" },
+                    { text: "In pädagogischen Teams plane ich gerne gemeinsame Projekte.", category: "education" }
                 ]
             },
             {
-                question: "8. Was ist dir bei deiner zukünftigen Berufswahl am wichtigsten?",
+                question: "8. Wie stehst du zu eigenverantwortlichem Arbeiten?",
                 options: [
-                    { text: "Sinnhaftigkeit, echtes Helfen und abwechslungsreiche Einsätze.", category: "rescue" },
-                    { text: "Kinder beim Aufwachsen begleiten und spielerisch fördern.", category: "kita" },
-                    { text: "Menschen langfristig pflegen, unterstützen oder individuell fördern.", category: "nursing" }
+                    { text: "In der Therapie kann ich gut eigenverantwortlich mit Patientinnen und Patienten arbeiten.", category: "therapy" },
+                    { text: "In Beratungs- und Betreuungssituationen arbeite ich gerne zielgerichtet und selbstständig.", category: "social" },
+                    { text: "Ich begleite Klienten oft selbstständig im persönlichen Wohnumfeld.", category: "inclusion" },
+                    { text: "Pädagogische Einzelförderung bereite ich eigenverantwortlich vor.", category: "education" }
+                ]
+            },
+            {
+                question: "9. Wie gehst du mit organisatorischen Aufgaben und Dokumentation um?",
+                options: [
+                    { text: "Ich behalte bei Anträgen, Dokumentation und Verwaltung den Überblick.", category: "social" },
+                    { text: "Einsätze zu protokollieren und den Wagen vorzubereiten, erfordert Struktur.", category: "rescue" },
+                    { text: "Pflegedokumentation und Stationsabläufe zu organisieren, fällt mir leicht.", category: "nursing" },
+                    { text: "Gruppenaktivitäten und Wochenpläne strukturiere ich gerne.", category: "education" }
+                ]
+            },
+            {
+                question: "10. Welcher Stellenwert hat Beratung und Kommunikation für dich?",
+                options: [
+                    { text: "Gespräche führen und Menschen in schwierigen Lebenslagen beraten, liegt mir.", category: "social" },
+                    { text: "Die Elternarbeit und Gespräche mit Jugendlichen sind mir sehr wichtig.", category: "education" },
+                    { text: "Patienten und Angehörige empathisch zu informieren, ist eine meiner Stärken.", category: "nursing" },
+                    { text: "Der Austausch mit Angehörigen und gesetzlichen Betreuern ist für mich zentral.", category: "inclusion" }
+                ]
+            },
+            {
+                question: "11. Wie verhältst du dich in stressigen Situationen?",
+                options: [
+                    { text: "Auch unter hohem Zeitdruck und Sirenenlärm bleibe ich absolut gelassen.", category: "rescue" },
+                    { text: "Stressigen Schichtdienst im Krankenhaus nehme ich sportlich und bleibe konzentriert.", category: "nursing" },
+                    { text: "Trubelige Gruppen bringen mich so schnell nicht aus der Ruhe.", category: "kita" },
+                    { text: "Geduld und Ruhe zeichnen mich auch in hektischen Momenten aus.", category: "therapy" }
+                ]
+            },
+            {
+                question: "12. Wie bewertest du deine körperliche und psychische Belastbarkeit?",
+                options: [
+                    { text: "Körperlicher Einsatz beim Tragen von Patienten oder Geräten macht mir nichts aus.", category: "rescue" },
+                    { text: "Anpacken und körperliche Arbeit in der Pflege gehören für mich dazu.", category: "nursing" },
+                    { text: "Ich bringe die nötige innere Stärke für herausfordernde Verhaltensweisen mit.", category: "inclusion" },
+                    { text: "Ich kann mich auf schwierige Situationen gut einstellen und bleibe stabil.", category: "therapy" }
+                ]
+            },
+            {
+                question: "13. Reizt dich die langfristige Begleitung von Menschen?",
+                options: [
+                    { text: "Menschen mit Behinderungen über Monate oder Jahre auf ihrem Lebensweg zu begleiten, ist wunderschön.", category: "inclusion" },
+                    { text: "Kinder über Jahre in ihrer Kita-Zeit heranwachsen zu sehen, ist toll.", category: "kita" },
+                    { text: "Jugendliche in ihrer Entwicklung langfristig zu unterstützen, motiviert mich.", category: "education" },
+                    { text: "Therapiefortschritte über längere Zeit zu sehen, ist unglaublich erfüllend.", category: "therapy" }
+                ]
+            },
+            {
+                question: "14. Wie wichtig ist dir kreative Problemlösung im Alltag?",
+                options: [
+                    { text: "Für körperliche oder kognitive Einschränkungen finde ich kreative Alltags-Lösungen.", category: "therapy" },
+                    { text: "Wenn Kinder quengeln, fällt mir immer sofort ein neues Spiel ein.", category: "kita" },
+                    { text: "Für langweilige Projekttage erfinde ich direkt spannende Alternativen.", category: "education" },
+                    { text: "In schwierigen Lebenslagen suche ich unkonventionelle Wege für Hilfen.", category: "social" }
+                ]
+            },
+            {
+                question: "15. Wie stehst du zu Abwechslung und neuen Herausforderungen im Beruf?",
+                options: [
+                    { text: "Kein Tag ist wie der andere – Notfälle bringen maximale Abwechslung.", category: "rescue" },
+                    { text: "Unterschiedliche Menschen und Lebensgeschichten sorgen für viel Abwechslung.", category: "social" },
+                    { text: "Verschiedene Krankheitsbilder und Therapieformen machen den Job sehr abwechslungsreich.", category: "therapy" },
+                    { text: "Verschiedene Stationen und Patientengruppen bieten ständige neue Herausforderungen.", category: "nursing" }
                 ]
             }
         ];
 
         let currentQuestionIndex = 0;
-        let userScores = { kita: 0, rescue: 0, nursing: 0, social: 0, therapy: 0, education: 0 };
+        let userScores = { kita: 0, education: 0, rescue: 0, nursing: 0, social: 0, therapy: 0, inclusion: 0 };
         let answerHistory = [];
 
         function openQuizModal(event) {
@@ -1045,7 +1115,7 @@
                 lastFocusedElement = event.currentTarget;
             }
             currentQuestionIndex = 0;
-            userScores = { kita: 0, rescue: 0, nursing: 0, social: 0, therapy: 0, education: 0 };
+            userScores = { kita: 0, education: 0, rescue: 0, nursing: 0, social: 0, therapy: 0, inclusion: 0 };
             answerHistory = [];
             document.getElementById('quiz-body').classList.remove('hidden');
             document.getElementById('quiz-header').classList.remove('hidden');
@@ -1160,31 +1230,38 @@
             let resultDesc = "";
             let alternatives = [];
 
-            // Spezielle Gleichstandslogik
             if (topCategories.length > 1) {
-                if (topCategories.includes('kita') && topCategories.includes('rescue')) {
-                    resultTitle = "Kinderpflege & Rettungsdienst (Mischvorschlag)";
-                    resultDesc = "Du zeigst sowohl starkes Interesse an der Arbeit mit Kindern als auch an spannenden Notsituationen. Beide Bereiche bieten dir actionreiche und erfüllende Perspektiven!";
-                    alternatives = ["Erzieher/-in", "Notfallsanitäter/-in", "Sozialassistent/-in"];
-                } else if (topCategories.includes('nursing') && topCategories.includes('therapy')) {
-                    resultTitle = "Pflege & Ergotherapie (Mischvorschlag)";
-                    resultDesc = "Du verbindest den Wunsch nach direkter menschlicher Pflege mit handwerklich-kreativer Alltagsförderung und Therapie.";
-                    alternatives = ["Pflegefachkraft", "Ergotherapeut/-in", "Heilerziehungspfleger/-in"];
-                } else if (topCategories.includes('education') && topCategories.includes('social')) {
-                    resultTitle = "Pädagogische & Soziale Berufe (Mischvorschlag)";
-                    resultDesc = "Deine Antworten zeigen ein vielseitiges Interesse an sozialer Begleitung, Beratung und pädagogischer Förderung.";
-                    alternatives = ["Sozialassistent/-in", "Heilerziehungspfleger/-in", "Erzieher/-in"];
+                if (topCategories.includes('kita') && topCategories.includes('education')) {
+                    resultTitle = "Kinderpfleger/-in oder Erzieher/-in";
+                    resultDesc = "Du hast ein starkes Interesse an der Arbeit mit Kindern, Geduld und Freude daran, junge Menschen spielerisch und pädagogisch zu begleiten.";
+                    alternatives = ["Sozialassistent/-in", "Heilerziehungspfleger/-in", "Ergotherapeut/-in"];
+                } else if (topCategories.includes('rescue') && topCategories.includes('nursing')) {
+                    resultTitle = "Rettungssanitäter/-in oder Pflegefachkraft";
+                    resultDesc = "Du verbindest medizinisches Interesse mit dem Wunsch nach direktem Helfen und Notfallversorgung bzw. professioneller Pflege.";
+                    alternatives = ["Notfallsanitäter/-in", "Ergotherapeut/-in", "Sozialassistent/-in"];
+                } else if (topCategories.includes('social') && topCategories.includes('inclusion')) {
+                    resultTitle = "Sozialassistent/-in oder Heilerziehungspfleger/-in";
+                    resultDesc = "Deine Antworten zeigen ein starkes Engagement für die Begleitung und Unterstützung von Menschen mit individuellem Förderbedarf im Alltag.";
+                    alternatives = ["Erzieher/-in", "Pflegefachkraft", "Ergotherapeut/-in"];
+                } else if (topCategories.includes('therapy') && topCategories.includes('inclusion')) {
+                    resultTitle = "Ergotherapeut/-in oder Heilerziehungspfleger/-in";
+                    resultDesc = "Du möchtest Menschen durch kreative, therapeutische oder alltagsnahe Ansätze zu mehr Selbstständigkeit verhelfen.";
+                    alternatives = ["Pflegefachkraft", "Sozialassistent/-in", "Erzieher/-in"];
                 } else {
-                    resultTitle = "Deine Interessen sind vielseitig – diese Bereiche könnten passen";
-                    resultDesc = "Da deine Antworten in mehrere Richtungen gehen, hast du hervorragende Voraussetzungen für abwechslungsreiche soziale Berufe.";
+                    resultTitle = "Deine Interessen sind vielseitig – diese Berufe passen zu dir";
+                    resultDesc = "Da deine Antworten in verschiedene Richtungen gehen, hast du exzellente Voraussetzungen für diverse soziale Fachbereiche.";
                     alternatives = ["Sozialassistent/-in", "Pflegefachkraft", "Erzieher/-in"];
                 }
             } else {
                 let bestCategory = topCategories[0] || 'kita';
-                if(bestCategory === 'kita' || bestCategory === 'education') {
-                    resultTitle = "Erzieher/-in oder Kinderpfleger/-in";
-                    resultDesc = "Du hast ein starkes Interesse an der Arbeit mit Kindern und Jugendlichen, Geduld und Freude daran, junge Menschen spielerisch und pädagogisch zu begleiten.";
+                if(bestCategory === 'kita') {
+                    resultTitle = "Kinderpfleger/-in oder Erzieher/-in";
+                    resultDesc = "Du hast ein starkes Interesse an der Arbeit mit Kindern, Geduld und Freude daran, junge Menschen spielerisch und pädagogisch zu begleiten.";
                     alternatives = ["Sozialassistent/-in", "Heilerziehungspfleger/-in", "Ergotherapeut/-in"];
+                } else if(bestCategory === 'education') {
+                    resultTitle = "Erzieher/-in oder Sozialassistent/-in";
+                    resultDesc = "Du möchtest Kinder und Jugendliche pädagogisch fördern, Projekte planen und sie auf ihrem Weg unterstützen.";
+                    alternatives = ["Kinderpfleger/-in", "Heilerziehungspfleger/-in", "Ergotherapeut/-in"];
                 } else if(bestCategory === 'rescue') {
                     resultTitle = "Rettungssanitäter/-in oder Notfallsanitäter/-in";
                     resultDesc = "Du behältst in stressigen Situationen einen klaren Kopf, interessierst dich für Medizin und möchtest dort helfen, wo schnelle Einsätze gefragt sind.";
@@ -1197,6 +1274,10 @@
                     resultTitle = "Ergotherapeut/-in";
                     resultDesc = "Du hast Freude daran, kreative und handwerkliche Ansätze mit medizinischer Hilfe zu verbinden, um Menschen zu mehr Alltagsunabhängigkeit zu verhelfen.";
                     alternatives = ["Physiotherapeut/-in", "Heilerziehungspfleger/-in", "Pflegefachkraft"];
+                } else if(bestCategory === 'inclusion') {
+                    resultTitle = "Heilerziehungspfleger/-in oder Ergotherapeut/-in";
+                    resultDesc = "Du möchtest Menschen mit Behinderungen oder Förderbedarf im täglichen Leben begleiten und ihre persönlichen Kompetenzen stärken.";
+                    alternatives = ["Sozialassistent/-in", "Erzieher/-in", "Pflegefachkraft"];
                 } else {
                     resultTitle = "Sozialassistent/-in oder Heilerziehungspfleger/-in";
                     resultDesc = "Du bist vielseitig interessiert, hilfsbereit und hast ein Talent für die Unterstützung von Menschen in verschiedenen Lebens- und Förderlagen.";
