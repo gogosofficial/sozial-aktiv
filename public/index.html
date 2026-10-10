@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jetzt aktiv werden in sozialen Berufen</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Finde heraus, welcher soziale Beruf zu dir passt: Kinderpflege, Rettungsdienst, Pflege, Soziale Arbeit und mehr.">
+    <!-- Open Graph Meta Tags für Social Media Vorschau -->
+    <meta property="og:title" content="Jetzt aktiv werden in sozialen Berufen">
+    <meta property="og:description" content="Finde heraus, welcher soziale Beruf zu dir passt und starte deinen Weg mit Sinn. Ein Projekt von Paul.">
+    <meta property="og:type" content="website">
+    <!-- Favicon Platzhalter -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤝</text></svg>">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -42,6 +50,28 @@
         .modal {
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
+        /* Scroll Animationen Klassen */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .animate-on-scroll {
+                opacity: 1;
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
@@ -50,7 +80,7 @@
     <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- LOGO -->
-            <a href="#" class="flex items-center gap-3 group">
+            <a href="#" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-xl p-1">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
                     <svg class="w-6 h-6 fill-none stroke-current stroke-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
@@ -64,22 +94,23 @@
 
             <!-- DESKTOP NAV -->
             <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
-                <a href="#berufe" class="hover:text-brand-600 transition-colors">Berufe entdecken</a>
-                <a href="#quiz-sektion" class="hover:text-brand-600 transition-colors">Berufs-Quiz</a>
-                <a href="#schulabschluss" class="hover:text-brand-600 transition-colors">Schulabschluss</a>
-                <a href="#organisationen" class="hover:text-brand-600 transition-colors">Anlaufstellen</a>
-                <a href="#ueber-mich" class="hover:text-brand-600 transition-colors">Über das Projekt</a>
+                <a href="#berufe" class="hover:text-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 rounded px-1">Berufe entdecken</a>
+                <a href="#sticker" class="hover:text-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 rounded px-1">Sticker</a>
+                <a href="#quiz-sektion" class="hover:text-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 rounded px-1">Berufs-Quiz</a>
+                <a href="#schulabschluss" class="hover:text-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 rounded px-1">Schulabschluss</a>
+                <a href="#organisationen" class="hover:text-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 rounded px-1">Anlaufstellen</a>
+                <a href="#ueber-mich" class="hover:text-brand-600 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 rounded px-1">Über das Projekt</a>
             </nav>
 
             <!-- CTA HEADER -->
             <div class="hidden md:flex items-center gap-4">
-                <button onclick="openQuizModal()" class="bg-coral-500 hover:bg-coral-600 text-white font-medium px-5 py-2.5 rounded-xl shadow-lg shadow-coral-500/25 transition-all transform hover:-translate-y-0.5">
+                <button onclick="openQuizModal()" class="bg-coral-500 hover:bg-coral-600 text-white font-medium px-5 py-2.5 rounded-xl shadow-lg shadow-coral-500/25 transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-coral-500">
                     Quiz starten
                 </button>
             </div>
 
             <!-- MOBILE BURGER BUTTON -->
-            <button id="burger-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none">
+            <button id="burger-btn" onclick="toggleMobileMenu()" aria-label="Menü öffnen" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -87,8 +118,9 @@
         </div>
 
         <!-- MOBILE MENU -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-3">
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-3 transition-all duration-300">
             <a href="#berufe" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium">Berufe entdecken</a>
+            <a href="#sticker" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium">Sticker</a>
             <a href="#quiz-sektion" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium">Berufs-Quiz</a>
             <a href="#schulabschluss" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium">Schulabschluss</a>
             <a href="#organisationen" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium">Anlaufstellen</a>
@@ -99,283 +131,358 @@
         </div>
     </header>
 
-    <!-- HERO SEKTION -->
-    <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 bg-gradient-to-b from-brand-50/50 via-white to-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center space-y-8">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100/80 text-brand-700 text-xs font-semibold tracking-wide uppercase">
-                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-                    Dein Einstieg in soziale Berufe
+    <main>
+        <!-- HERO SEKTION -->
+        <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 bg-gradient-to-b from-brand-50/50 via-white to-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center space-y-8 animate-on-scroll">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100/80 text-brand-700 text-xs font-semibold tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        Dein Einstieg in soziale Berufe
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
+                        Jetzt aktiv werden in <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-teal-500">sozialen Berufen.</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed">
+                        Du willst Menschen helfen, Verantwortung übernehmen und einen Beruf mit echtem Sinn finden? Finde heraus, welcher Weg zu dir passt.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+                        <button onclick="openQuizModal()" class="w-full sm:w-auto bg-coral-500 hover:bg-coral-600 text-white font-semibold px-8 py-4 rounded-xl shadow-xl shadow-coral-500/25 transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-coral-500 flex items-center justify-center gap-2">
+                            <span>Quiz starten</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                        <a href="#berufe" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 font-semibold px-8 py-4 rounded-xl border border-slate-200 shadow-sm transition-all text-center focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            Berufe entdecken
+                        </a>
+                    </div>
+
+                    <!-- Kurzvorstellung / Zitat Paul -->
+                    <div class="pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-center gap-4 text-left max-w-xl mx-auto">
+                        <div class="w-12 h-12 rounded-full bg-brand-500 text-white font-bold flex items-center justify-center shrink-0 shadow-md">
+                            P
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-slate-900 text-center sm:text-left">Hi, ich bin Paul 👋</p>
+                            <p class="text-xs sm:text-sm text-slate-500 mt-0.5 text-center sm:text-left">
+                                „Ich möchte mit diesem Projekt zeigen, dass soziale Berufe mehr sind als viele denken: Verantwortung, Teamwork, Hilfe im Alltag und echte Zukunftschancen.“
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
-                    Jetzt aktiv werden in <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-teal-500">sozialen Berufen.</span>
-                </h1>
-                <p class="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed">
-                    Du willst Menschen helfen, Verantwortung übernehmen und einen Beruf mit echtem Sinn finden? Finde heraus, welcher Weg zu dir passt.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-                    <button onclick="openQuizModal()" class="w-full sm:w-auto bg-coral-500 hover:bg-coral-600 text-white font-semibold px-8 py-4 rounded-xl shadow-xl shadow-coral-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
-                        <span>Quiz starten</span>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </button>
-                    <a href="#berufe" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 font-semibold px-8 py-4 rounded-xl border border-slate-200 shadow-sm transition-all text-center">
-                        Berufe entdecken
-                    </a>
+            </div>
+        </section>
+
+        <!-- BERUFSÜBERSICHT -->
+        <section id="berufe" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto space-y-4 mb-16 animate-on-scroll">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Entdecke vielseitige Berufe</h2>
+                    <p class="text-slate-600 text-base sm:text-lg">Soziale Berufe sind extrem abwechslungsreich. Hier ist eine Auswahl an spannenden Fachrichtungen mit echten Zukunftsperspektiven.</p>
                 </div>
 
-                <!-- Kurzvorstellung / Zitat Paul -->
-                <div class="pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-center gap-4 text-left max-w-xl mx-auto">
-                    <div class="w-12 h-12 rounded-full bg-brand-500 text-white font-bold flex items-center justify-center shrink-0 shadow-md">
-                        P
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Beruf 1 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all transform hover:-translate-y-1 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">👶</div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Kinderpfleger/-in</h3>
+                            <p class="text-slate-600 text-sm mb-4">Begleitung, Betreuung und Förderung von Kleinkindern in Kitas oder Kinderkrippen im Alltag.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li>✨ <strong class="text-slate-700">Stärken:</strong> Geduld, Einfühlungsvermögen, Kreativität</li>
+                                <li>🚀 <strong class="text-slate-700">Einstieg:</strong> Ausbildung (oft mit Realschulabschluss oder Hauptschulabschluss)</li>
+                            </ul>
+                        </div>
+                        <button onclick="openJobModal('Kinderpfleger/-in', 'Kinderpfleger und Kinderpflegerinnen arbeiten eng mit Erziehern zusammen und unterstützen bei der Betreuung, Erziehung und Pflege von Säuglingen und Kleinkindern. Sie gestalten den Tagesablauf, spielen, basteln, helfen beim Essen und sorgen für eine liebevolle Atmosphäre in Kindertageseinrichtungen.', 'Geduld, Freude an der Arbeit mit Kindern, Verantwortungsbewusstsein, Kreativität und Teamfähigkeit.', 'Ausbildung an Fachschulen oder Berufsfachschulen (je nach Bundesland unterschiedlich geregelt).')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            Mehr erfahren
+                        </button>
                     </div>
-                    <div>
-                        <p class="text-sm font-medium text-slate-900 text-center sm:text-left">Hi, ich bin Paul 👋</p>
-                        <p class="text-xs sm:text-sm text-slate-500 mt-0.5 text-center sm:text-left">
-                            „Ich möchte mit diesem Projekt zeigen, dass soziale Berufe mehr sind als viele denken: Verantwortung, Teamwork, Hilfe im Alltag und echte Zukunftschancen.“
+
+                    <!-- Beruf 2 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all transform hover:-translate-y-1 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">🎨</div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Erzieher/-in</h3>
+                            <p class="text-slate-600 text-sm mb-4">Pädagogische Förderung von Kindern und Jugendlichen, Bildungsarbeit und Freizeitgestaltung.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li>✨ <strong class="text-slate-700">Stärken:</strong> Kommunikationsstärke, Verantwortungsgefühl, Organisation</li>
+                                <li>🚀 <strong class="text-slate-700">Einstieg:</strong> Fachschule / Ausbildung (oft praxisintegriert)</li>
+                            </ul>
+                        </div>
+                        <button onclick="openJobModal('Erzieher/-in', 'Erzieherinnen und Erzieher tragen eine große Verantwortung bei der Entwicklung von Kindern und Jugendlichen. Sie planen pädagogische Angebote, fördern soziale Kompetenzen, begleiten Projekte und arbeiten eng mit Eltern zusammen.', 'Begeisterungsfähigkeit, Durchsetzungsvermögen, Empathie und Konfliktfähigkeit.', 'Fachschule für Sozialpädagogik (klassisch oder praxisintegrierte Ausbildung - PiA).')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            Mehr erfahren
+                        </button>
+                    </div>
+
+                    <!-- Beruf 3 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all transform hover:-translate-y-1 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">🚑</div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Rettungssanitäter/-in</h3>
+                            <p class="text-slate-600 text-sm mb-4">Einsatz im Krankentransport und Rettungsdienst, Erste Hilfe leisten und Notfallsanitäter unterstützen.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li>✨ <strong class="text-slate-700">Stärken:</strong> Ruhiges Auftreten, Stressresistenz, Teamgeist</li>
+                                <li>🚀 <strong class="text-slate-700">Einstieg:</strong> Staatlich anerkannte Ausbildung / Lehrgang (ca. 3 Monate + Praktika)</li>
+                            </ul>
+                        </div>
+                        <button onclick="openJobModal('Rettungssanitäter/-in', 'Rettungssanitäter sind ein unverzichtbarer Teil des Rettungsdienstes. Sie betreuen erkrankte oder verletzte Personen, bereiten medizinische Maßnahmen vor, sichern Unfallorte ab und dokumentieren Einsätze.', 'Schnelle Auffassungsgabe, körperliche und psychische Belastbarkeit, Verantwortungsbewusstsein.', 'Ausbildung an Rettungsschulen von Hilfsorganisationen (DRK, ASB, Malteser, Johanniter etc.).')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            Mehr erfahren
+                        </button>
+                    </div>
+
+                    <!-- Beruf 4 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all transform hover:-translate-y-1 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">🏥</div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Notfallsanitäter/-in</h3>
+                            <p class="text-slate-600 text-sm mb-4">Die höchste nicht-ärztliche Qualifikation im Rettungsdienst mit eigenverantwortlicher Notfallversorgung.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li>✨ <strong class="text-slate-700">Stärken:</strong> Entschlossenheit, medizinisches Interesse, Verantwortungsbewusstsein</li>
+                                <li>🚀 <strong class="text-slate-700">Einstieg:</strong> 3-jährige duale Ausbildung</li>
+                            </ul>
+                        </div>
+                        <button onclick="openJobModal('Notfallsanitäter/-in', 'Notfallsanitäter übernehmen die medizinische Erstversorgung und Betreuung von Notfallpatienten bis zur ärztlichen Behandlung im Krankenhaus. Sie führen lebensrettende Sofortmaßnahmen durch und bedienen moderne Notfalltechnik.', 'Hohe Verantwortungsbereitschaft, psychische Stabilität, Teamfähigkeit und medizinisches Interesse.', 'Dreijährige staatlich geregelte Berufsausbildung an Rettungsdienstschulen und Kliniken.')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            Mehr erfahren
+                        </button>
+                    </div>
+
+                    <!-- Beruf 5 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all transform hover:-translate-y-1 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">👵</div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Pflegefachkraft</h3>
+                            <p class="text-slate-600 text-sm mb-4">Professionelle Pflege, Beratung und Betreuung von Menschen aller Altersstufen im Krankenhaus oder in Pflegeheimen.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li>✨ <strong class="text-slate-700">Stärken:</strong> Empathie, Zuverlässigkeit, medizinisches Grundverständnis</li>
+                                <li>🚀 <strong class="text-slate-700">Einstieg:</strong> Generalistische Pflegeausbildung (3 Jahre)</li>
+                            </ul>
+                        </div>
+                        <button onclick="openJobModal('Pflegefachkraft', 'Pflegefachkräfte planen, steuern und dokumentieren Pflegeprozesse. Sie unterstützen Patientinnen und Patienten bei der Genesung oder im Alltag, führen ärztliche Verordnungen aus und stehen als wichtige Bezugspersonen zur Seite.', 'Hohe soziale Kompetenz, Einfühlungsvermögen, Zuverlässigkeit und körperliche Belastbarkeit.', 'Dreijährige generalistische Ausbildung an Pflegeschulen mit Praxiseinsätzen.')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            Mehr erfahren
+                        </button>
+                    </div>
+
+                    <!-- Beruf 6 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all transform hover:-translate-y-1 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">🤝</div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Sozialassistent/-in</h3>
+                            <p class="text-slate-600 text-sm mb-4">Unterstützung von sozialpädagogischen oder pflegerischen Fachkräften in verschiedenen sozialen Einrichtungen.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li>✨ <strong class="text-slate-700">Stärken:</strong> Hilfsbereitschaft, Vielseitigkeit, Teamgeist</li>
+                                <li>🚀 <strong class="text-slate-700">Einstieg:</strong> Ausbildung an Berufsfachschulen (oft 2 Jahre)</li>
+                            </ul>
+                        </div>
+                        <button onclick="openJobModal('Sozialassistent/-in', 'Sozialassistenten und -assistentinnen unterstützen Fachkräfte in der Kinder- und Jugendhilfe oder in der Pflege. Sie helfen im Alltag, bei Freizeitaktivitäten oder hauswirtschaftlichen Aufgaben und bilden oft das Fundament für weiterführende Ausbildungen.', 'Hilfsbereitschaft, organisatorisches Talent, Teamfähigkeit und Flexibilität.', 'Zweijährige Ausbildung an berufsbildenden Schulen (oft ideal mit Hauptschulabschluss).')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            Mehr erfahren
+                        </button>
+                    </div>
+
+                    <!-- Beruf 7: Ergotherapeut/-in -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all transform hover:-translate-y-1 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">🧩</div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Ergotherapeut/-in</h3>
+                            <p class="text-slate-600 text-sm mb-4">Unterstützung von Menschen aller Altersstufen, um Handlungsfähigkeit im Alltag und Selbstständigkeit zurückzugewinnen.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li>✨ <strong class="text-slate-700">Stärken:</strong> Kreativität, Einfühlungsvermögen, Geduld, handwerkliches Geschick</li>
+                                <li>🚀 <strong class="text-slate-700">Einstieg:</strong> Ausbildung an Fachschulen / Berufsfachschulen (oft 3 Jahre)</li>
+                            </ul>
+                        </div>
+                        <button onclick="openJobModal('Ergotherapeut/-in', 'Ergotherapeuten helfen Menschen, die durch Krankheit, Verletzung oder Behinderung in ihrer Selbstständigkeit eingeschränkt sind. Sie entwickeln individuelle Therapiepläne mit kreativen, handwerklichen oder alltagsbezogenen Aktivitäten.', 'Einfühlungsvermögen, Kreativität, Geduld und strukturierte Arbeitsweise.', 'Ausbildung an Berufsfachschulen für Ergotherapie (teilweise schulgeldfrei geregelt).')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            Mehr erfahren
+                        </button>
+                    </div>
+
+                    <!-- Beruf 8: Heilerziehungspfleger/-in -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all transform hover:-translate-y-1 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">🌱</div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Heilerziehungspfleger/-in</h3>
+                            <p class="text-slate-600 text-sm mb-4">Begleitung, Betreuung und Förderung von Menschen mit Behinderungen im täglichen Leben und Wohnumfeld.</p>
+                            <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                                <li>✨ <strong class="text-slate-700">Stärken:</strong> Soziale Kompetenz, Belastbarkeit, Empathie, Freude an Begleitung</li>
+                                <li>🚀 <strong class="text-slate-700">Einstieg:</strong> Staatlich anerkannte Fachschulausbildung (oft praxisintegriert)</li>
+                            </ul>
+                        </div>
+                        <button onclick="openJobModal('Heilerziehungspfleger/-in', 'Heilerziehungspfleger unterstützen Menschen mit körperlichen, geistigen oder psychischen Beeinträchtigungen dabei, ein möglichst selbstbestimmtes Leben zu führen. Sie begleiten in Wohneinrichtungen, Werkstätten oder Schulen und fördern persönliche Kompetenzen.', 'Hohe soziale Kompetenz, Empathie, psychische Stabilität und Freude an langfristiger Begleitung.', 'Fachschulausbildung (oft praxisintegrierte Ausbildung mit Ausbildungsvergütung).')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            Mehr erfahren
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STICKER & QR-CODE SEKTION -->
+        <section id="sticker" class="py-20 bg-slate-100/70 border-y border-slate-200/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-6 space-y-6 text-center lg:text-left animate-on-scroll">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold tracking-wide uppercase">
+                            Sticker-Aktion
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Dein Sticker. Dein Einstieg.</h2>
+                        <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                            Scanne den QR-Code und finde heraus, welcher soziale Beruf zu dir passt. Die Sticker machen auf Plakaten oder im Freundeskreis direkt auf das Projekt aufmerksam und bieten einen unkomplizierten Zugang zur Berufsfindung.
+                        </p>
+                        <p class="text-xs text-slate-500 italic">
+                            Hinweis: Der QR-Code auf den physischen Stickern führt später direkt zu dieser GitHub-Pages-Webseite.
                         </p>
                     </div>
+
+                    <div class="lg:col-span-6 flex justify-center animate-on-scroll">
+                        <!-- Sticker Mockup -->
+                        <div class="relative w-full max-w-sm bg-gradient-to-br from-white to-brand-50 p-8 rounded-3xl border border-brand-200 shadow-2xl shadow-brand-500/10 transform sm:rotate-2 hover:rotate-0 transition-transform">
+                            <div class="absolute -top-3 -right-3 bg-coral-500 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                                QR-Aktion
+                            </div>
+                            <div class="text-center space-y-4">
+                                <div class="w-36 h-36 mx-auto bg-white rounded-2xl p-3 shadow-inner border border-slate-100 flex items-center justify-center">
+                                    <!-- QR Code SVG Platzhalter -->
+                                    <svg class="w-full h-full text-slate-800" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14-2h2v2h-2v-2zm-4 0h2v2h-2v-2zm4 4h2v4h-2v-4zm-4 2h2v2h-2v-2zm4-8h2v2h-2V6zm-8 10h2v2h-2v-2zm2 2h2v2h-2v-2zm2-2h2v2h-2v-2z"/>
+                                    </svg>
+                                </div>
+                                <div class="space-y-1">
+                                    <h3 class="font-bold text-slate-950 text-base">„Jetzt aktiv werden in sozialen Berufen“</h3>
+                                    <p class="text-xs text-brand-700 font-semibold">QR-Code scannen & loslegen</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- BERUFSÜBERSICHT -->
-    <section id="berufe" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Entdecke vielseitige Berufe</h2>
-                <p class="text-slate-600 text-base sm:text-lg">Soziale Berufe sind extrem abwechslungsreich. Hier ist eine Auswahl an spannenden Fachrichtungen mit echten Zukunftsperspektiven.</p>
+        <!-- QUIZ SEKTION BANNER -->
+        <section id="quiz-sektion" class="py-16 bg-gradient-to-r from-brand-600 to-teal-700 text-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 animate-on-scroll">
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Welcher soziale Beruf passt zu dir?</h2>
+                <p class="text-brand-100 text-lg max-w-2xl mx-auto">Finde es in unserem interaktiven 8-Fragen-Quiz heraus. Erhalte sofort eine erste Orientierung und passende Vorschläge.</p>
+                <button onclick="openQuizModal()" class="bg-coral-500 hover:bg-coral-600 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-black/10 transition-all transform hover:-translate-y-0.5 inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-coral-500">
+                    <span>Quiz jetzt starten</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                </button>
             </div>
+        </section>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Beruf 1 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">👶</div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Kinderpfleger/-in</h3>
-                        <p class="text-slate-600 text-sm mb-4">Begleitung, Betreuung und Förderung von Kleinkindern in Kitas oder Kinderkrippen im Alltag.</p>
-                        <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
-                            <li>✨ <strong class="text-slate-700">Stärken:</strong> Geduld, Einfühlungsvermögen, Kreativität</li>
-                            <li>🚀 <strong class="text-slate-700">Einstieg:</strong> Ausbildung (oft mit Realschulabschluss oder Hauptschulabschluss)</li>
-                        </ul>
-                    </div>
-                    <button onclick="openJobModal('Kinderpfleger/-in', 'Kinderpfleger und Kinderpflegerinnen arbeiten eng mit Erziehern zusammen und unterstützen bei der Betreuung, Erziehung und Pflege von Säuglingen und Kleinkindern. Sie gestalten den Tagesablauf, spielen, basteln, helfen beim Essen und sorgen für eine liebevolle Atmosphäre in Kindertageseinrichtungen.', 'Geduld, Freude an der Arbeit mit Kindern, Verantwortungsbewusstsein, Kreativität und Teamfähigkeit.', 'Ausbildung an Fachschulen oder Berufsfachschulen (je nach Bundesland unterschiedlich geregelt).')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm">
-                        Mehr erfahren
-                    </button>
+        <!-- SCHULABSCHLUSS AUSWAHL -->
+        <section id="schulabschluss" class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto space-y-4 mb-12 animate-on-scroll">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Welcher Weg passt zu deinem Schulabschluss?</h2>
+                    <p class="text-slate-600">Wähle deinen aktuellen oder angestrebten Abschluss aus und erfahre, welche Einstiegsmöglichkeiten dir offenstehen.</p>
                 </div>
 
-                <!-- Beruf 2 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">🎨</div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Erzieher/-in</h3>
-                        <p class="text-slate-600 text-sm mb-4">Pädagogische Förderung von Kindern und Jugendlichen, Bildungsarbeit und Freizeitgestaltung.</p>
-                        <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
-                            <li>✨ <strong class="text-slate-700">Stärken:</strong> Kommunikationsstärke, Verantwortungsgefühl, Organisation</li>
-                            <li>🚀 <strong class="text-slate-700">Einstieg:</strong> Fachschule / Ausbildung (oft praxisintegriert)</li>
-                        </ul>
-                    </div>
-                    <button onclick="openJobModal('Erzieher/-in', 'Erzieherinnen und Erzieher tragen eine große Verantwortung bei der Entwicklung von Kindern und Jugendlichen. Sie planen pädagogische Angebote, fördern soziale Kompetenzen, begleiten Projekte und arbeiten eng mit Eltern zusammen.', 'Begeisterungsfähigkeit, Durchsetzungsvermögen, Empathie und Konfliktfähigkeit.', 'Fachschule für Sozialpädagogik (klassisch oder praxisintegrierte Ausbildung - PiA).')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm">
-                        Mehr erfahren
-                    </button>
+                <!-- Tabs / Buttons für Schulabschlüsse -->
+                <div class="flex flex-wrap justify-center gap-3 mb-10 animate-on-scroll">
+                    <button onclick="filterSchoolPath('keiner')" class="school-tab px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white text-slate-700 border border-slate-200 shadow-sm hover:border-brand-500 active-tab focus:outline-none focus:ring-2 focus:ring-brand-500">Noch kein Abschluss</button>
+                    <button onclick="filterSchoolPath('hauptschule')" class="school-tab px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white text-slate-700 border border-slate-200 shadow-sm hover:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">Hauptschulabschluss</button>
+                    <button onclick="filterSchoolPath('realschule')" class="school-tab px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white text-slate-700 border border-slate-200 shadow-sm hover:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">Realschulabschluss</button>
+                    <button onclick="filterSchoolPath('abitur')" class="school-tab px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white text-slate-700 border border-slate-200 shadow-sm hover:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">Fachoberschulreife / Abitur</button>
+                    <button onclick="filterSchoolPath('ausbildung')" class="school-tab px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white text-slate-700 border border-slate-200 shadow-sm hover:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500">Berufsausbildung</button>
                 </div>
 
-                <!-- Beruf 3 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">🚑</div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Rettungssanitäter/-in</h3>
-                        <p class="text-slate-600 text-sm mb-4">Einsatz im Krankentransport und Rettungsdienst, Erste Hilfe leisten und Notfallsanitäter unterstützen.</p>
-                        <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
-                            <li>✨ <strong class="text-slate-700">Stärken:</strong> Ruhiges Auftreten, Stressresistenz, Teamgeist</li>
-                            <li>🚀 <strong class="text-slate-700">Einstieg:</strong> Staatlich anerkannte Ausbildung / Lehrgang (ca. 3 Monate + Praktika)</li>
-                        </ul>
-                    </div>
-                    <button onclick="openJobModal('Rettungssanitäter/-in', 'Rettungssanitäter sind ein unverzichtbarer Teil des Rettungsdienstes. Sie betreuen erkrankte oder verletzte Personen, bereiten medizinische Maßnahmen vor, sichern Unfallorte ab und dokumentieren Einsätze.', 'Schnelle Auffassungsgabe, körperliche und psychische Belastbarkeit, Verantwortungsbewusstsein.', 'Ausbildung an Rettungsschulen von Hilfsorganisationen (DRK, ASB, Malteser, Johanniter etc.).')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm">
-                        Mehr erfahren
-                    </button>
-                </div>
-
-                <!-- Beruf 4 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">🏥</div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Notfallsanitäter/-in</h3>
-                        <p class="text-slate-600 text-sm mb-4">Die höchste nicht-ärztliche Qualifikation im Rettungsdienst mit eigenverantwortlicher Notfallversorgung.</p>
-                        <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
-                            <li>✨ <strong class="text-slate-700">Stärken:</strong> Entschlossenheit, medizinisches Interesse, Verantwortungsbewusstsein</li>
-                            <li>🚀 <strong class="text-slate-700">Einstieg:</strong> 3-jährige duale Ausbildung</li>
-                        </ul>
-                    </div>
-                    <button onclick="openJobModal('Notfallsanitäter/-in', 'Notfallsanitäter übernehmen die medizinische Erstversorgung und Betreuung von Notfallpatienten bis zur ärztlichen Behandlung im Krankenhaus. Sie führen lebensrettende Sofortmaßnahmen durch und bedienen moderne Notfalltechnik.', 'Hohe Verantwortungsbereitschaft, psychische Stabilität, Teamfähigkeit und medizinisches Interesse.', 'Dreijährige staatlich geregelte Berufsausbildung an Rettungsdienstschulen und Kliniken.')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm">
-                        Mehr erfahren
-                    </button>
-                </div>
-
-                <!-- Beruf 5 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">👵</div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Pflegefachkraft</h3>
-                        <p class="text-slate-600 text-sm mb-4">Professionelle Pflege, Beratung und Betreuung von Menschen aller Altersstufen im Krankenhaus oder in Pflegeheimen.</p>
-                        <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
-                            <li>✨ <strong class="text-slate-700">Stärken:</strong> Empathie, Zuverlässigkeit, medizinisches Grundverständnis</li>
-                            <li>🚀 <strong class="text-slate-700">Einstieg:</strong> Generalistische Pflegeausbildung (3 Jahre)</li>
-                        </ul>
-                    </div>
-                    <button onclick="openJobModal('Pflegefachkraft', 'Pflegefachkräfte planen, steuern und dokumentieren Pflegeprozesse. Sie unterstützen Patientinnen und Patienten bei der Genesung oder im Alltag, führen ärztliche Verordnungen aus und stehen als wichtige Bezugspersonen zur Seite.', 'Hohe soziale Kompetenz, Einfühlungsvermögen, Zuverlässigkeit und körperliche Belastbarkeit.', 'Dreijährige generalistische Ausbildung an Pflegeschulen mit Praxiseinsätzen.')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm">
-                        Mehr erfahren
-                    </button>
-                </div>
-
-                <!-- Beruf 6 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-brand-500/50 hover:shadow-xl hover:shadow-brand-500/5 transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-xl mb-4">🤝</div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Sozialassistent/-in</h3>
-                        <p class="text-slate-600 text-sm mb-4">Unterstützung von sozialpädagogischen oder pflegerischen Fachkräften in verschiedenen sozialen Einrichtungen.</p>
-                        <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
-                            <li>✨ <strong class="text-slate-700">Stärken:</strong> Hilfsbereitschaft, Vielseitigkeit, Teamgeist</li>
-                            <li>🚀 <strong class="text-slate-700">Einstieg:</strong> Ausbildung an Berufsfachschulen (oft 2 Jahre)</li>
-                        </ul>
-                    </div>
-                    <button onclick="openJobModal('Sozialassistent/-in', 'Sozialassistenten und -assistentinnen unterstützen Fachkräfte in der Kinder- und Jugendhilfe oder in der Pflege. Sie helfen im Alltag, bei Freizeitaktivitäten oder hauswirtschaftlichen Aufgaben und bilden oft das Fundament für weiterführende Ausbildungen.', 'Hilfsbereitschaft, organisatorisches Talent, Teamfähigkeit und Flexibilität.', 'Zweijährige Ausbildung an berufsbildenden Schulen (oft ideal mit Hauptschulabschluss).')" class="w-full bg-white hover:bg-brand-500 hover:text-white text-brand-600 font-semibold py-2.5 rounded-xl border border-brand-200 transition-colors text-sm">
-                        Mehr erfahren
-                    </button>
+                <!-- Inhalt Container für Schulabschlüsse -->
+                <div id="school-content-container" class="max-w-3xl mx-auto bg-white rounded-2xl p-8 border border-slate-100 shadow-xl shadow-slate-200/50 animate-on-scroll">
+                    <!-- Dynamischer Inhalt per JS -->
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- QUIZ SEKTION BANNER -->
-    <section id="quiz-sektion" class="py-16 bg-gradient-to-r from-brand-600 to-teal-700 text-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Welcher soziale Beruf passt zu dir?</h2>
-            <p class="text-brand-100 text-lg max-w-2xl mx-auto">Finde es in unserem interaktiven 8-Fragen-Quiz heraus. Erhalte sofort eine erste Orientierung und passende Vorschläge.</p>
-            <button onclick="openQuizModal()" class="bg-coral-500 hover:bg-coral-600 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-black/10 transition-all transform hover:-translate-y-0.5 inline-flex items-center gap-2">
-                <span>Quiz jetzt starten</span>
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-            </button>
-        </div>
-    </section>
-
-    <!-- SCHULABSCHLUSS AUSWAHL -->
-    <section id="schulabschluss" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Welcher Weg passt zu deinem Schulabschluss?</h2>
-                <p class="text-slate-600">Wähle deinen aktuellen oder angestrebten Abschluss aus und erfahre, welche Einstiegsmöglichkeiten dir offenstehen.</p>
-            </div>
-
-            <!-- Tabs / Buttons für Schulabschlüsse -->
-            <div class="flex flex-wrap justify-center gap-3 mb-10">
-                <button onclick="filterSchoolPath('keiner')" class="school-tab px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white text-slate-700 border border-slate-200 shadow-sm hover:border-brand-500 active-tab">Noch kein Abschluss</button>
-                <button onclick="filterSchoolPath('hauptschule')" class="school-tab px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white text-slate-700 border border-slate-200 shadow-sm hover:border-brand-500">Hauptschulabschluss</button>
-                <button onclick="filterSchoolPath('realschule')" class="school-tab px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white text-slate-700 border border-slate-200 shadow-sm hover:border-brand-500">Realschulabschluss</button>
-                <button onclick="filterSchoolPath('abitur')" class="school-tab px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white text-slate-700 border border-slate-200 shadow-sm hover:border-brand-500">Fachoberschulreife / Abitur</button>
-                <button onclick="filterSchoolPath('ausbildung')" class="school-tab px-5 py-2.5 rounded-xl font-medium text-sm transition-all bg-white text-slate-700 border border-slate-200 shadow-sm hover:border-brand-500">Berufsausbildung</button>
-            </div>
-
-            <!-- Inhalt Container für Schulabschlüsse -->
-            <div id="school-content-container" class="max-w-3xl mx-auto bg-white rounded-2xl p-8 border border-slate-100 shadow-xl shadow-slate-200/50">
-                <!-- Dynamischer Inhalt per JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ANLAUFSTELLEN & ORGANISATIONEN -->
-    <section id="organisationen" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Wo kannst du loslegen?</h2>
-                <p class="text-slate-600">Hier findest du offizielle Anlaufstellen, Hilfsorganisationen und Beratungspartner, bei denen du dich über Ausbildungen, Freiwilligendienste und Praktika informieren kannst.</p>
-            </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Org 1 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between">
-                    <div>
-                        <div class="font-bold text-lg text-slate-900 mb-2">Deutsches Rotes Kreuz (DRK)</div>
-                        <p class="text-sm text-slate-600 mb-4">Umfassende Angebote im Rettungsdienst, in der Pflege, Kitas und im Freiwilligen Sozialen Jahr (FSJ).</p>
-                    </div>
-                    <a href="https://www.drk.de" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 font-semibold text-sm">
-                        <span>Zur DRK-Website</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
+        <!-- ANLAUFSTELLEN & ORGANISATIONEN -->
+        <section id="organisationen" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto space-y-4 mb-16 animate-on-scroll">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Wo kannst du loslegen?</h2>
+                    <p class="text-slate-600">Hier findest du offizielle Anlaufstellen, Hilfsorganisationen und Beratungspartner, bei denen du dich über Ausbildungen, Freiwilligendienste und Praktika informieren kannst.</p>
                 </div>
 
-                <!-- Org 2 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between">
-                    <div>
-                        <div class="font-bold text-lg text-slate-900 mb-2">Arbeiter-Samariter-Bund (ASB)</div>
-                        <p class="text-sm text-slate-600 mb-4">Informationen zu sozialen Berufen, Katastrophenschutz, Pflege und sozialer Arbeit.</p>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Org 1 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="font-bold text-lg text-slate-900 mb-2">Deutsches Rotes Kreuz (DRK)</div>
+                            <p class="text-sm text-slate-600 mb-4">Umfassende Angebote im Rettungsdienst, in der Pflege, Kitas und im Freiwilligen Sozialen Jahr (FSJ).</p>
+                        </div>
+                        <a href="https://www.drk.de" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 font-semibold text-sm focus:outline-none focus:underline">
+                            <span>Zur DRK-Website</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
                     </div>
-                    <a href="https://www.asb.de" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 font-semibold text-sm">
-                        <span>Zur ASB-Website</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
-                </div>
 
-                <!-- Org 3 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between">
-                    <div>
-                        <div class="font-bold text-lg text-slate-900 mb-2">Malteser Hilfsdienst</div>
-                        <p class="text-sm text-slate-600 mb-4">Einstieg in Sanitätsdienste, Altenpflege, Hospizarbeit und soziale Ehrenämter.</p>
+                    <!-- Org 2 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="font-bold text-lg text-slate-900 mb-2">Arbeiter-Samariter-Bund (ASB)</div>
+                            <p class="text-sm text-slate-600 mb-4">Informationen zu sozialen Berufen, Katastrophenschutz, Pflege und sozialer Arbeit.</p>
+                        </div>
+                        <a href="https://www.asb.de" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 font-semibold text-sm focus:outline-none focus:underline">
+                            <span>Zur ASB-Website</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
                     </div>
-                    <a href="https://www.malteser.de" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 font-semibold text-sm">
-                        <span>Zur Malteser-Website</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
-                </div>
 
-                <!-- Org 4 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between">
-                    <div>
-                        <div class="font-bold text-lg text-slate-900 mb-2">Johanniter-Unfall-Hilfe</div>
-                        <p class="text-sm text-slate-600 mb-4">Ausbildung und Karriere in Rettungsdienst, Jugendbetreuung und Seniorenhilfe.</p>
+                    <!-- Org 3 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="font-bold text-lg text-slate-900 mb-2">Malteser Hilfsdienst</div>
+                            <p class="text-sm text-slate-600 mb-4">Einstieg in Sanitätsdienste, Altenpflege, Hospizarbeit und soziale Ehrenämter.</p>
+                        </div>
+                        <a href="https://www.malteser.de" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 font-semibold text-sm focus:outline-none focus:underline">
+                            <span>Zur Malteser-Website</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
                     </div>
-                    <a href="https://www.johanniter.de" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 font-semibold text-sm">
-                        <span>Zur Johanniter-Website</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
-                </div>
 
-                <!-- Org 5 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between">
-                    <div>
-                        <div class="font-bold text-lg text-slate-900 mb-2">Bundesagentur für Arbeit</div>
-                        <p class="text-sm text-slate-600 mb-4">Berufsberatung, freie Ausbildungsplätze und detaillierte Steckbriefe zu allen sozialen Berufen.</p>
+                    <!-- Org 4 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="font-bold text-lg text-slate-900 mb-2">Johanniter-Unfall-Hilfe</div>
+                            <p class="text-sm text-slate-600 mb-4">Ausbildung und Karriere in Rettungsdienst, Jugendbetreuung und Seniorenhilfe.</p>
+                        </div>
+                        <a href="https://www.johanniter.de" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 font-semibold text-sm focus:outline-none focus:underline">
+                            <span>Zur Johanniter-Website</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
                     </div>
-                    <a href="https://www.arbeitsagentur.de" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 font-semibold text-sm">
-                        <span>Zur Arbeitsagentur</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
-                </div>
 
-                <!-- Org 6 -->
-                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between">
-                    <div>
-                        <div class="font-bold text-lg text-slate-900 mb-2">Lokale Berufsberatung & Jobcenter</div>
-                        <p class="text-sm text-slate-600 mb-4">Persönliche Beratung vor Ort, Vermittlung von Praktika und regionalen Einstiegsprogrammen.</p>
+                    <!-- Org 5 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="font-bold text-lg text-slate-900 mb-2">Bundesagentur für Arbeit</div>
+                            <p class="text-sm text-slate-600 mb-4">Berufsberatung, freie Ausbildungsplätze und detaillierte Steckbriefe zu allen sozialen Berufen.</p>
+                        </div>
+                        <a href="https://www.arbeitsagentur.de" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-700 font-semibold text-sm focus:outline-none focus:underline">
+                            <span>Zur Arbeitsagentur</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
                     </div>
-                    <span class="text-xs font-medium text-slate-500">Tipp: Einfach vor Ort in deiner Stadt informieren.</span>
+
+                    <!-- Org 6 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="font-bold text-lg text-slate-900 mb-2">Lokale Berufsberatung & Jobcenter</div>
+                            <p class="text-sm text-slate-600 mb-4">Persönliche Beratung vor Ort, Vermittlung von Praktika und regionalen Einstiegsprogrammen.</p>
+                        </div>
+                        <span class="text-xs font-medium text-slate-500">Tipp: Einfach vor Ort in deiner Stadt informieren.</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ÜBER MICH SEKTION -->
-    <section id="ueber-mich" class="py-20 bg-slate-50 border-t border-slate-200/60">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <div class="w-16 h-16 mx-auto rounded-2xl bg-brand-500 text-white font-bold text-2xl flex items-center justify-center shadow-lg shadow-brand-500/30">
-                P
+        <!-- ÜBER MICH SEKTION -->
+        <section id="ueber-mich" class="py-20 bg-slate-50 border-t border-slate-200/60">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 animate-on-scroll">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-brand-500 text-white font-bold text-2xl flex items-center justify-center shadow-lg shadow-brand-500/30">
+                    P
+                </div>
+                <h2 class="text-3xl font-extrabold text-slate-900">Wer hinter dem Projekt steckt</h2>
+                <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+                    Hi! Ich bin Paul, Schüler bzw. Teilnehmer im sozialen Bereich. Ich interessiere mich extrem für Kinderpflege, Rettungsdienst, Community-Projekte und digitale Ideen. Mein Ziel mit diesem Projekt ist es, junge Menschen unkompliziert und auf Augenhöhe für soziale Berufe zu begeistern. Keine trockenen Broschüren, sondern direkte Orientierung.
+                </p>
             </div>
-            <h2 class="text-3xl font-extrabold text-slate-900">Wer hinter dem Projekt steckt</h2>
-            <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-                Hi! Ich bin Paul, Schüler bzw. Teilnehmer im sozialen Bereich. Ich interessiere mich extrem für Kinderpflege, Rettungsdienst, Community-Projekte und digitale Ideen. Mein Ziel mit diesem Projekt ist es, junge Menschen unkompliziert und auf Augenhöhe für soziale Berufe zu begeistern. Keine trockenen Broschüren, sondern direkte Orientierung.
-            </p>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- FOOTER -->
     <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
@@ -387,6 +494,7 @@
                 </div>
                 <div class="flex items-center gap-4 text-sm">
                     <a href="#berufe" class="hover:text-white transition-colors">Berufe</a>
+                    <a href="#sticker" class="hover:text-white transition-colors">Sticker</a>
                     <a href="#quiz-sektion" class="hover:text-white transition-colors">Quiz</a>
                     <a href="#organisationen" class="hover:text-white transition-colors">Anlaufstellen</a>
                 </div>
@@ -401,9 +509,9 @@
 
 
     <!-- ================= MODAL: JOB DETAILS ================= -->
-    <div id="job-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden modal opacity-0">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
-            <button onclick="closeJobModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 p-2 rounded-xl bg-slate-100">
+    <div id="job-modal" aria-hidden="true" role="dialog" aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden modal opacity-0">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300" id="job-modal-content">
+            <button onclick="closeJobModal()" aria-label="Schließen" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 p-2 rounded-xl bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <div>
@@ -425,16 +533,16 @@
                 </div>
             </div>
             <div class="pt-4 border-t border-slate-100 flex justify-end">
-                <button onclick="closeJobModal()" class="bg-slate-900 text-white font-medium px-6 py-2.5 rounded-xl text-sm">Schließen</button>
+                <button onclick="closeJobModal()" class="bg-slate-900 hover:bg-slate-800 text-white font-medium px-6 py-2.5 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-slate-900">Schließen</button>
             </div>
         </div>
     </div>
 
 
     <!-- ================= MODAL: QUIZ ================= -->
-    <div id="quiz-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden modal opacity-0">
-        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
-            <button onclick="closeQuizModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 p-2 rounded-xl bg-slate-100">
+    <div id="quiz-modal" aria-hidden="true" role="dialog" aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden modal opacity-0">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300" id="quiz-modal-content">
+            <button onclick="closeQuizModal()" aria-label="Schließen" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 p-2 rounded-xl bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-500">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
 
@@ -451,6 +559,12 @@
 
             <!-- Quiz Fragen Container -->
             <div id="quiz-body" class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <button id="quiz-back-btn" onclick="prevQuestion()" class="hidden text-xs font-medium text-slate-500 hover:text-brand-600 flex items-center gap-1 focus:outline-none">
+                        ← Zurück
+                    </button>
+                    <span></span>
+                </div>
                 <h3 id="quiz-question" class="text-xl font-bold text-slate-900">Frage wird geladen...</h3>
                 <div id="quiz-options" class="space-y-3">
                     <!-- Optionen per JS -->
@@ -474,8 +588,9 @@
                 <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 text-center">
                     ℹ️ Das Quiz ist eine erste Orientierung und ersetzt keine berufliche Beratung.
                 </div>
-                <div class="flex justify-center pt-2">
-                    <button onclick="resetQuiz()" class="bg-brand-600 hover:bg-brand-700 text-white font-medium px-6 py-2.5 rounded-xl text-sm">Quiz wiederholen</button>
+                <div class="flex flex-col sm:flex-row justify-center gap-3 pt-2">
+                    <button onclick="scrollToBerufe()" class="bg-brand-600 hover:bg-brand-700 text-white font-medium px-5 py-2.5 rounded-xl text-sm transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-brand-500">Passende Berufe ansehen</button>
+                    <button onclick="resetQuiz()" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-medium px-5 py-2.5 rounded-xl text-sm transition-all focus:outline-none focus:ring-2 focus:ring-brand-500">Quiz wiederholen</button>
                 </div>
             </div>
         </div>
@@ -484,10 +599,71 @@
 
     <!-- ================= JAVASCRIPT ================= -->
     <script>
+        // Scroll Animation Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Initialize default school tab
+            const firstTab = document.querySelector('.school-tab');
+            if(firstTab) {
+                firstTab.click();
+            }
+
+            // Global Modal Backdrop & Escape Key Handlers
+            setupModals();
+        });
+
         // Mobile Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+        }
+
+        // Modal Management (Escape key, background click, scroll lock)
+        function setupModals() {
+            const jobModal = document.getElementById('job-modal');
+            const quizModal = document.getElementById('quiz-modal');
+
+            // Backdrop click close
+            jobModal.addEventListener('click', (e) => {
+                if(e.target === jobModal) closeJobModal();
+            });
+            quizModal.addEventListener('click', (e) => {
+                if(e.target === quizModal) closeQuizModal();
+            });
+
+            // Escape key close
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeJobModal();
+                    closeQuizModal();
+                }
+            });
+        }
+
+        function lockScroll(lock) {
+            if(lock) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         }
 
         // Job Modal Functions
@@ -498,21 +674,35 @@
             document.getElementById('modal-job-entry').innerText = entry;
 
             const modal = document.getElementById('job-modal');
+            const content = document.getElementById('job-modal-content');
+            modal.setAttribute('aria-hidden', 'false');
             modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            lockScroll(true);
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
         }
 
         function closeJobModal() {
             const modal = document.getElementById('job-modal');
+            const content = document.getElementById('job-modal-content');
             modal.classList.add('opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.setAttribute('aria-hidden', 'true');
+                lockScroll(false);
+            }, 300);
         }
 
         // School Path Data & Logic
         const schoolData = {
             keiner: {
                 title: "Noch kein Schulabschluss",
-                desc: "Kein Problem! Du hast tolle Möglichkeiten, dich zu orientieren und den Einstieg zu finden:",
+                desc: "Kein Problem! Dir stehen viele mögliche Wege offen, dich zu orientieren und den Einstieg zu finden:",
                 points: [
                     "<strong>Berufsvorbereitende Bildungsmaßnahmen (BvB):</strong> Helfen dir, deinen Weg zu finden.",
                     "<strong>Praktika:</strong> Teste verschiedene soziale Berufe im Alltag aus.",
@@ -522,7 +712,7 @@
             },
             hauptschule: {
                 title: "Hauptschulabschluss",
-                desc: "Mit dem Hauptschulabschluss stehen dir viele praktische Einstiege offen:",
+                desc: "Mit dem Hauptschulabschluss hast du gute Aussichten auf zahlreiche praktische Einstiege:",
                 points: [
                     "<strong>Sozialassistent/-in:</strong> Die ideale ein- oder zweijährige Ausbildung als solide Basis.",
                     "<strong>Pflegefachassistenz:</strong> Einstieg in den Pflegebereich mit guten Zukunftsaussichten.",
@@ -532,7 +722,7 @@
             },
             realschule: {
                 title: "Realschulabschluss / Mittlere Reife",
-                desc: "Mit der Mittleren Reife hast du hervorragende und vielfältige Möglichkeiten:",
+                desc: "Mit der Mittleren Reife stehen dir hervorragende und vielfältige Möglichkeiten offen:",
                 points: [
                     "<strong>Ausbildung als Erzieher/-in oder Kinderpfleger/-in:</strong> Direkter Einstieg an Fachschulen.",
                     "<strong>Pflegefachkraft (Generalistik):</strong> Die moderne 3-jährige Ausbildung im Gesundheitswesen.",
@@ -552,7 +742,7 @@
             },
             ausbildung: {
                 title: "Bereits abgeschlossene Berufsausbildung",
-                desc: "Du bringst schon berufliche Vorerfahrung mit? Das ist ein Riesen-Vorteil für den Quereinstieg:",
+                desc: "Du bringst schon berufliche Vorerfahrung mit? Das ist ein starker Vorteil für neue Wege:",
                 points: [
                     "<strong>Quereinstieg:</strong> Viele soziale Bereiche suchen gezielt Menschen mit Lebenserfahrung und Vorkenntnissen.",
                     "<strong>Aufbauausbildungen & Spezialisierungen:</strong> Verkürzte Ausbildungen oder Weiterbildungen (z.B. Heilpädagogik).",
@@ -585,22 +775,28 @@
                             <span>${point}</span>
                          </li>`;
             });
-            html += `</ul></div>`;
+            html += `</ul>
+                <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between flex-wrap gap-3">
+                    <p class="text-xs text-slate-500 italic">ℹ️ Die genauen Voraussetzungen können je nach Bundesland, Schule und Träger unterschiedlich sein.</p>
+                    <button onclick="scrollToBerufe()" class="bg-brand-600 hover:bg-brand-700 text-white font-medium px-4 py-2 rounded-xl text-xs transition-all focus:outline-none focus:ring-2 focus:ring-brand-500">Passende Berufe entdecken</button>
+                </div>
+            </div>`;
             container.innerHTML = html;
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const firstTab = document.querySelector('.school-tab');
-            if(firstTab) {
-                firstTab.click();
+        function scrollToBerufe() {
+            closeQuizModal();
+            const el = document.getElementById('berufe');
+            if(el) {
+                el.scrollIntoView({ behavior: 'smooth' });
             }
-        });
+        }
 
 
         // ================= QUIZ LOGIC =================
         const quizQuestions = [
             {
-                question: "1. Wie findest du es, mit Kindern zu arbeiten?",
+                question: "1. Wie findest du es, mit Kindern und Jugendlichen zu arbeiten?",
                 options: [
                     { text: "Super! Ich spiele, bastle und fördere gerne Kinder.", category: "kita" },
                     { text: "Geht so, ist nicht mein Hauptfokus.", category: "other" },
@@ -608,69 +804,71 @@
                 ]
             },
             {
-                question: "2. Würdest du in einer Notsituation ruhig bleiben und helfen wollen?",
+                question: "2. Würdest du in einer Notsituation ruhig bleiben und sofort anpacken wollen?",
                 options: [
-                    { text: "Ja, absolut! Adrenalin stört mich nicht, ich packe an.", category: "rescue" },
-                    { text: "Wenn ich gut ausgebildet bin, ja.", category: "rescue" },
-                    { text: "Eher nicht, ich bevorzuge ruhige Umgebungen.", category: "other" }
+                    { text: "Ja, absolut! Adrenalin stört mich nicht, ich helfe gerne.", category: "rescue" },
+                    { text: "Wenn ich gut ausgebildet bin, auf jeden Fall.", category: "rescue" },
+                    { text: "Eher nicht, ich bevorzuge ruhige und geordnete Umgebungen.", category: "other" }
                 ]
             },
             {
-                question: "3. Was macht dir mehr Spaß: Menschen direkt helfen oder im Hintergrund organisieren?",
+                question: "3. Was reizt dich mehr: Direkte Pflege und Betreuung von Menschen oder kreative Förderung?",
                 options: [
-                    { text: "Ganz klar direkter Kontakt und Pflege von Menschen.", category: "nursing" },
-                    { text: "Sowohl als auch – Organisation und Mensch verbinden.", category: "social" },
-                    { text: "Gerne auch Planung, Verwaltung und Koordination.", category: "social" }
+                    { text: "Menschliche Pflege, medizinische Unterstützung und Alltagsbegleitung.", category: "nursing" },
+                    { text: "Kreative Therapien, Handwerk und alltagsnahe Aktivierung.", category: "therapy" },
+                    { text: "Begleitung von Menschen mit individuellem Förderbedarf.", category: "education" }
                 ]
             },
             {
-                question: "4. Wie wichtig ist dir Teamarbeit?",
+                question: "4. Wie wichtig ist dir Teamarbeit im Arbeitsalltag?",
                 options: [
-                    { text: "Sehr wichtig! Im Team sind wir unschlagbar.", category: "rescue" },
-                    { text: "Wichtig, aber ich kann auch gut eigenständig arbeiten.", category: "kita" },
-                    { text: "Arbeite meistens lieber allein.", category: "other" }
+                    { text: "Sehr wichtig! Im eingespielten Team sind wir unschlagbar.", category: "rescue" },
+                    { text: "Wichtig, aber ich kann auch super selbstständig arbeiten.", category: "kita" },
+                    { text: "Ich mag eine ausgeglichene Mischung aus Team und Eigenverantwortung.", category: "social" }
                 ]
             },
             {
-                question: "5. Kannst du dir vorstellen, älteren Menschen im Alltag zu helfen?",
+                question: "5. Kannst du dir vorstellen, älteren oder hilfsbedürftigen Menschen im Alltag zur Seite zu stehen?",
                 options: [
                     { text: "Ja, ich schätze Lebenserfahrung und helfe sehr gerne.", category: "nursing" },
-                    { text: "Vielleicht in Teilbereichen.", category: "social" },
-                    { text: "Nicht unbedingt mein Favorit.", category: "other" }
+                    { text: "Vielleicht in bestimmten Teilbereichen.", category: "social" },
+                    $ { text: "Nicht unbedingt mein persönlicher Schwerpunkt.", category: "other" }
                 ]
             },
             {
-                question: "6. Interessierst du dich für Medizin, Gesundheit und Erste Hilfe?",
+                question: "6. Interessieren dich Themen wie Gesundheit, Medizin und Erste Hilfe?",
                 options: [
-                    { text: "Ja, das Thema fasziniert mich total!", category: "rescue" },
-                    { text: "Grundlegendes Interesse ist da.", category: "nursing" },
-                    { text: "Nicht besonders.", category: "other" }
+                    { text: "Ja, medizinische Themen und Notfallhilfe faszinieren mich total!", category: "rescue" },
+                    { text: "Ein grundlegendes Interesse an Gesundheit ist absolut da.", category: "nursing" },
+                    { text: "Nicht besonders, mein Fokus liegt woanders.", category: "other" }
                 ]
             },
             {
                 question: "7. Wie gehst du mit stressigen Situationen um?",
                 options: [
-                    { text: "Ich bleibe gelassen und behalte den Überblick.", category: "rescue" },
-                    { text: "Mit etwas Planung und Ruhe kriege ich das hin.", category: "kita" },
-                    { text: "Stress setzt mich schnell unter Druck.", category: "social" }
+                    { text: "Ich bewahre einen kühlen Kopf und behalte den Überblick.", category: "rescue" },
+                    { text: "Mit etwas Planung und Ruhe kriege ich jede Hürde hin.", category: "kita" },
+                    { text: "In stressigen Momenten brauche ich einen klaren Rhythmus.", category: "social" }
                 ]
             },
             {
-                question: "8. Was ist dir bei einem Beruf am wichtigsten?",
+                question: "8. Was ist dir bei deiner zukünftigen Berufswahl am wichtigsten?",
                 options: [
-                    { text: "Sinnhaftigkeit, echtes Helfen und abwechslungsreiche Action.", category: "rescue" },
-                    { text: "Kinder beim Aufwachsen begleiten und fördern.", category: "kita" },
-                    { text: "Menschen pflegen und langfristig unterstützen.", category: "nursing" }
+                    { text: "Sinnhaftigkeit, echtes Helfen und abwechslungsreiche Einsätze.", category: "rescue" },
+                    { text: "Kinder beim Aufwachsen begleiten und spielerisch fördern.", category: "kita" },
+                    { text: "Menschen langfristig pflegen, unterstützen oder individuell fördern.", category: "nursing" }
                 ]
             }
         ];
 
         let currentQuestionIndex = 0;
-        let userScores = { kita: 0, rescue: 0, nursing: 0, social: 0 };
+        let userScores = { kita: 0, rescue: 0, nursing: 0, social: 0, therapy: 0, education: 0 };
+        let answerHistory = [];
 
         function openQuizModal() {
             currentQuestionIndex = 0;
-            userScores = { kita: 0, rescue: 0, nursing: 0, social: 0 };
+            userScores = { kita: 0, rescue: 0, nursing: 0, social: 0, therapy: 0, education: 0 };
+            answerHistory = [];
             document.getElementById('quiz-body').classList.remove('hidden');
             document.getElementById('quiz-header').classList.remove('hidden');
             document.getElementById('quiz-result').classList.add('hidden');
@@ -678,20 +876,42 @@
             loadQuestion();
 
             const modal = document.getElementById('quiz-modal');
+            const content = document.getElementById('quiz-modal-content');
+            modal.setAttribute('aria-hidden', 'false');
             modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            lockScroll(true);
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
         }
 
         function closeQuizModal() {
             const modal = document.getElementById('quiz-modal');
+            const content = document.getElementById('quiz-modal-content');
             modal.classList.add('opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.setAttribute('aria-hidden', 'true');
+                lockScroll(false);
+            }, 300);
         }
 
         function loadQuestion() {
             const q = quizQuestions[currentQuestionIndex];
             document.getElementById('quiz-question').innerText = q.question;
             
+            // Back button visibility
+            const backBtn = document.getElementById('quiz-back-btn');
+            if(currentQuestionIndex > 0) {
+                backBtn.classList.remove('hidden');
+            } else {
+                backBtn.classList.add('hidden');
+            }
+
             const progressPercent = ((currentQuestionIndex + 1) / quizQuestions.length) * 100;
             document.getElementById('quiz-progress-text').innerText = `Frage ${currentQuestionIndex + 1} von ${quizQuestions.length}`;
             document.getElementById('quiz-progress-percent').innerText = `${Math.round(progressPercent)}%`;
@@ -700,25 +920,44 @@
             const optionsContainer = document.getElementById('quiz-options');
             optionsContainer.innerHTML = '';
 
-            q.options.forEach((opt, index) => {
+            q.options.forEach((opt) => {
                 const btn = document.createElement('button');
-                btn.className = "w-full text-left p-4 rounded-xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50/50 transition-all font-medium text-slate-700 text-sm flex items-center justify-between group";
+                btn.className = "w-full text-left p-4 rounded-xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50/50 transition-all font-medium text-slate-700 text-sm flex items-center justify-between group focus:outline-none focus:ring-2 focus:ring-brand-500";
                 btn.innerHTML = `<span>${opt.text}</span> <span class="text-brand-500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>`;
-                btn.onclick = () => selectAnswer(opt.category);
+                btn.onclick = () => selectAnswer(opt.category, btn);
                 optionsContainer.appendChild(btn);
             });
         }
 
-        function selectAnswer(category) {
+        function selectAnswer(category, btnElement) {
+            // Visual confirmation highlight
+            btnElement.classList.add('bg-brand-100', 'border-brand-500', 'text-brand-900');
+            
+            // Save answer history for back functionality
+            answerHistory[currentQuestionIndex] = category;
+
             if(category && userScores[category] !== undefined) {
                 userScores[category]++;
             }
 
-            currentQuestionIndex++;
-            if(currentQuestionIndex < quizQuestions.length) {
+            setTimeout(() => {
+                currentQuestionIndex++;
+                if(currentQuestionIndex < quizQuestions.length) {
+                    loadQuestion();
+                } else {
+                    showQuizResult();
+                }
+            }, 250);
+        }
+
+        function prevQuestion() {
+            if(currentQuestionIndex > 0) {
+                const prevCategory = answerHistory[currentQuestionIndex - 1];
+                if(prevCategory && userScores[prevCategory] !== undefined) {
+                    userScores[prevCategory] = Math.max(0, userScores[prevCategory] - 1);
+                }
+                currentQuestionIndex--;
                 loadQuestion();
-            } else {
-                showQuizResult();
             }
         }
 
@@ -727,35 +966,48 @@
             document.getElementById('quiz-header').classList.add('hidden');
             document.getElementById('quiz-result').classList.remove('hidden');
 
-            let bestCategory = 'kita';
+            // Find best category with tie-breaking
             let maxScore = -1;
+            let topCategories = [];
             for(let cat in userScores) {
                 if(userScores[cat] > maxScore) {
                     maxScore = userScores[cat];
-                    bestCategory = cat;
+                    topCategories = [cat];
+                } else if(userScores[cat] === maxScore) {
+                    topCategories.push(cat);
                 }
             }
+
+            let bestCategory = topCategories[0] || 'kita';
 
             let resultTitle = "";
             let resultDesc = "";
             let alternatives = [];
 
-            if(bestCategory === 'kita') {
+            if(topCategories.length > 1 && topCategories.includes('kita') && topCategories.includes('rescue')) {
+                resultTitle = "Kinderpflege & Rettungsdienst (Vielseitige Interessen)";
+                resultDesc = "Du zeigst sowohl starkes Interesse an der Arbeit mit Kindern als auch an spannenden Notsituationen. Beide Bereiche bieten dir actionreiche und erfüllende Perspektiven!";
+                alternatives = ["Erzieher/-in", "Notfallsanitäter/-in", "Sozialassistent/-in"];
+            } else if(bestCategory === 'kita' || bestCategory === 'education') {
                 resultTitle = "Erzieher/-in oder Kinderpfleger/-in";
-                resultDesc = "Du hast ein starkes Interesse an der Arbeit mit Kindern, Geduld und Freude daran, junge Menschen spielerisch zu fördern und zu begleiten.";
+                resultDesc = "Du hast ein starkes Interesse an der Arbeit mit Kindern und Jugendlichen, Geduld und Freude daran, junge Menschen spielerisch und pädagogisch zu begleiten.";
                 alternatives = ["Sozialassistent/-in", "Heilerziehungspfleger/-in", "Ergotherapeut/-in"];
             } else if(bestCategory === 'rescue') {
                 resultTitle = "Rettungssanitäter/-in oder Notfallsanitäter/-in";
                 resultDesc = "Du behältst in stressigen Situationen einen klaren Kopf, interessierst dich für Medizin und möchtest dort helfen, wo schnelle Einsätze gefragt sind.";
-                alternatives = ["Pflegefachkraft", "Medizinische/r Fachangestellte/r", "Sozialassistent/-in"];
+                alternatives = ["Pflegefachkraft", "Ergotherapeut/-in", "Sozialassistent/-in"];
             } else if(bestCategory === 'nursing') {
                 resultTitle = "Pflegefachkraft";
                 resultDesc = "Du bringst viel Empathie, Verantwortungsbewusstsein und den Wunsch mit, Menschen im Alltag oder bei der Genesung professionell zu unterstützen.";
-                alternatives = ["Altenpflegehelfer/-in", "Ergotherapeut/-in", "Rettungssanitäter/-in"];
+                alternatives = ["Altenpflegehelfer/-in", "Heilerziehungspfleger/-in", "Rettungssanitäter/-in"];
+            } else if(bestCategory === 'therapy') {
+                resultTitle = "Ergotherapeut/-in";
+                resultDesc = "Du hast Freude daran, kreative und handwerkliche Ansätze mit medizinischer Hilfe zu verbinden, um Menschen zu mehr Alltagsunabhängigkeit zu verhelfen.";
+                alternatives = ["Physiotherapeut/-in", "Heilerziehungspfleger/-in", "Pflegefachkraft"];
             } else {
-                resultTitle = "Sozialassistent/-in";
-                resultDesc = "Du bist vielseitig interessiert, hilfsbereit und hast ein Talent für Organisation sowie die Unterstützung von Menschen in verschiedenen Lebenslagen.";
-                alternatives = ["Erzieher/-in", "Pflegefachkraft", "Verwaltung im Sozialwesen"];
+                resultTitle = "Sozialassistent/-in oder Heilerziehungspfleger/-in";
+                resultDesc = "Du bist vielseitig interessiert, hilfsbereit und hast ein Talent für die Unterstützung von Menschen in verschiedenen Lebens- und Förderlagen.";
+                alternatives = ["Erzieher/-in", "Pflegefachkraft", "Ergotherapeut/-in"];
             }
 
             document.getElementById('result-title').innerText = resultTitle;
